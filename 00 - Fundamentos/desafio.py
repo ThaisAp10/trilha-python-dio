@@ -1,8 +1,13 @@
+# Arquivo original está no seguinte link:
+# https://github.com/digitalinnovationone/trilha-python-dio/blob/main/00%20-%20Fundamentos/desafio.py
+# Foi apenas implementada a opção "[t] Transferir" no menu com algumas condições
+
 menu = """
 
 [d] Depositar
 [s] Sacar
 [e] Extrato
+[t] Transferir 
 [q] Sair
 
 => """
@@ -52,6 +57,22 @@ while True:
 
         else:
             print("Operação falhou! O valor informado é inválido.")
+
+# Transferência 
+    elif opcao == "t":
+        valor = float(input("Informe o valor que deseja transferir: "))
+        banco = input("Digite o nome do banco que deseja transferir: ")
+        nome_conta_transferencia = input("Digite o nome da conta que deseja trasnferir: ")
+
+        excedeu_saldo = valor > saldo
+        if excedeu_saldo:
+            print("Operação falhou! Você não tem saldo suficiente.")
+        elif valor > 0:
+            saldo -= valor
+            extrato += f"Valor trasnferido: R$ {valor:.2f} para conta {nome_conta_transferencia} do banco {banco.upper()}\n"
+        else:
+            print("Operação falhou! O valor informado é inválido.")        
+# Transferência
 
     elif opcao == "e":
         print("\n================ EXTRATO ================")
